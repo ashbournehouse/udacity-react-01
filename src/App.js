@@ -109,9 +109,14 @@ class App extends Component {
         	<h2>Favorite Movies</h2>
 			{/*Start out by iterating over something using .map*/}
 			{profiles.map(profile => {
-          		const userName = profile.userID;
+          		const userID = profile.userID;
+             	const userName = users[userID].name
+				const favoriteMovieID = profile.favoriteMovieID;
+				const favoriteMovie = movies[favoriteMovieID].name;
           		return (
-          			<li key={profile.id}>{userName}</li>
+          			<li key={profile.id}>
+						<p>{`${userName}\'s favorite movie is: "${favoriteMovie}".`}</p>
+					</li>
 				);
 			})}
 		</ul>
