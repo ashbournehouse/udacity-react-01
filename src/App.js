@@ -105,7 +105,16 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-        <h2>Favorite Movies</h2>
+		<ul>
+        	<h2>Favorite Movies</h2>
+			{/*Start out by iterating over something using .map*/}
+			{profiles.map(profile => {
+          		const userName = profile.userID;
+          		return (
+          			<li key={profile.id}>{userName}</li>
+				);
+			})}
+		</ul>
       </div>
     );
   }
