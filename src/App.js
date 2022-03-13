@@ -120,7 +120,7 @@ class App extends Component {
                 const favoriteMovie = movies[favoriteMovieID].name;
                 return (
                   React.createElement('li', {},
-                    React.createElement('p', {}, `${userName} favorite movie is: ${favoriteMovie}`)
+                    React.createElement('p', {style: {fontWeight:'normal', fontSize: '0.8em'}}, `${userName}'s favorite movie is: ${favoriteMovie}`)
                   )  /* End of React.createElement('li', ...  */
                 )  /* End of return function */
               }  /* End of arrow function */
