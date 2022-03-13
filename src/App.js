@@ -100,29 +100,54 @@ const movies = {
 class App extends Component {
   render() {
     return (
-      <div>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">ReactND - Coding Practice</h1>
-        </header>
-		<ul>
-        	<h2>Favorite Movies</h2>
-			{/*Start out by iterating over something using .map*/}
-			{profiles.map(profile => {
-          		const userID = profile.userID;
-             	const userName = users[userID].name
-				const favoriteMovieID = profile.favoriteMovieID;
-				const favoriteMovie = movies[favoriteMovieID].name;
-          		return (
-          			<li key={profile.id}>
-						<p>{`${userName}\'s favorite movie is: "${favoriteMovie}".`}</p>
-					</li>
-				);
-			})}
-		</ul>
-      </div>
-    );
+      React.createElement('div', {},
+        React.createElement('header', {className: "App-header"},
+          React.createElement('img', {src: logo, className: "App-logo", alt: "logo"}, null),
+          React.createElement('img', {src: logo, className: "App-logo", alt: "logo"}, null),
+          React.createElement('img', {src: logo, className: "App-logo", alt: "logo"}, null),
+          React.createElement('h1', {className: "App-title"}, 'ReactND - Coding Practice'),
+        ),
+        React.createElement('div', {style: {backgroundColor:'#333399'}},
+          React.createElement('p', {style: {color:'#ffff33'}}, 'Render without JSX goes here.'),
+          React.createElement('ul', {},
+            React.createElement('h2', {style: {color:'#ffff33'}},
+              `Favorite Movies (using React.createElement)`,
+              /*Iterate using .map*/
+              profiles.map(profile => {
+                const userID = profile.userID;
+                const userName = users[userID].name
+                const favoriteMovieID = profile.favoriteMovieID;
+                const favoriteMovie = movies[favoriteMovieID].name;
+                return (
+                  React.createElement('li', {},
+                    React.createElement('p', {}, `${userName} favorite movie is: ${favoriteMovie}`)
+                  )  /* End of React.createElement('li', ...  */
+                )  /* End of return function */
+              }  /* End of arrow function */
+              )  /* End of profiles.map */
+            )  /* End of React.createElement('h2', ...  */
+          )  /* End of React.createElement('ul', ...  */
+        ),  /* End of React.createElement('div', ...  */
+
+        <div id="UsingJsx" style={{backgroundColor:'#66aa66'}}>
+          <p>Render with JSX goes here.</p>
+  		    <ul>
+          	<h2>Favorite Movies (using JSX)</h2>
+  			     {/* Iterating using .map */}
+  			     {profiles.map(profile => {
+            	const userID = profile.userID;
+              const userName = users[userID].name
+  				    const favoriteMovieID = profile.favoriteMovieID;
+  				    const favoriteMovie = movies[favoriteMovieID].name;
+            	return (
+            		<li key={profile.id}>
+  						    <p>{`${userName}\'s favorite movie is ... "${favoriteMovie}".`}</p>
+  				      </li>
+  				    );
+  			     })}
+  		    </ul>
+        </div>
+      ))};
   }
-}
 
 export default App;
